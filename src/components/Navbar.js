@@ -20,7 +20,7 @@ const Navbar = () => {
       </Link>
       <Stack direction="row" gap="40px" fontSize="24px" alignItems="flex-end">
         <Link
-          to="/"
+          href="/"
           style={{
             textDecoration: "none",
             color: "black",
