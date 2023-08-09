@@ -15,7 +15,7 @@ const BodyPart = ({ item, bodyPart, setBodyPart }) => {
         boxShadow: "none",
         borderRadius: "0",
         ":hover": {
-          boxShadow: "  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);",
+          boxShadow: "  0.1em 0.1em 1em rgba(0, 0, 0, 0.3);",
         },
       }}
     >
