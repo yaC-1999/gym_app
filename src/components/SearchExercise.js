@@ -2,10 +2,10 @@ import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { exercisesOption, exercisesOptions } from "../utils/fetchData";
 import { fetchData } from "../utils/fetchData";
+import HorizontalScollbar from "./HorizontalScollbar";
 
-const SearchExercise = () => {
+const SearchExercise = ({ setExercises, bodyPart, setBodyPart }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [exercises, setExercises] = useState([]);
   const [bodyParts, setBodyParts] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const SearchExercise = () => {
       setBodyParts(["all", ...bodyPartsData]);
     };
     fetchExercisesData();
-    console.log(bodyParts)
+    console.log(bodyParts);
   }, []);
 
   const handleSearch = async () => {
@@ -86,8 +86,15 @@ const SearchExercise = () => {
           </Button>
         </Grid>
       </Grid>
+      <Grid container p="20px" mt="40px">
+        <HorizontalScollbar
+          data={bodyParts}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
+      </Grid>
 
-      <Box position="relative" mb="72px"></Box>
+      {/* <Box position="relative" mb="72px"></Box> */}
     </Stack>
   );
 };
