@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import { Link } from "@mui/material";
 import Logo from "../assets/images/Logo.png";
 
 const Navbar = () => {
+  useEffect(() => {
+    console.log('useEffect')
+    console.log(window.location)
+    if (window.location.hash === "#exercises") {
+      console.log('first')
+      window.scrollTo({ top: 1000, behavior: "smooth" });
+    }
+  }, []);
+
   return (
     <Stack
       direction="row"
       justifyContent="space-around"
-      sx={{ gap: { sm: "122px", xs: "40px" }, mt: { sm: "32px", xs: "20px" } , justifyContent:'none' }}
+      sx={{
+        gap: { sm: "122px", xs: "40px" },
+        mt: { sm: "32px", xs: "20px" },
+        justifyContent: "none",
+      }}
       px="20px"
     >
       <Link>
@@ -30,7 +43,14 @@ const Navbar = () => {
           Home
         </Link>
         <Link
-          to="#exercises"
+          component="button"
+          onClick={() => {
+            if (window.location.pathname === "/") {
+              window.scrollTo({ top: 950, behavior: "smooth" });
+            } else {
+              window.location.href = "/#exercises";
+            }
+          }}
           style={{ textDecoration: "none", color: "black" }}
         >
           Exercises

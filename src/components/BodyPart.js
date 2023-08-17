@@ -7,6 +7,7 @@ const BodyPart = ({ item, bodyPart, setBodyPart }) => {
     <Card
       onClick={() => {
         setBodyPart(item);
+        window.scrollTo({ top: 1300, behavior: "smooth" });
       }}
       sx={{
         // padding: "20px 30px",

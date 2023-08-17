@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Exercises from "./Exercises";
 import HomeBanner from "./HomeBanner";
 import SearchExercise from "./SearchExercise";
@@ -7,6 +7,8 @@ import SearchExercise from "./SearchExercise";
 const Home = () => {
   const [exercises, setExercises] = useState([]);
   const [bodyPart, setBodyPart] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   return (
     <Box>
@@ -15,11 +17,14 @@ const Home = () => {
         setExercises={setExercises}
         bodyPart={bodyPart}
         setBodyPart={setBodyPart}
+        setCurrentPage={setCurrentPage}
       />
-      <Exercises
+       <Exercises
+        exercises={exercises}
         setExercises={setExercises}
         bodyPart={bodyPart}
-        setBodyPart={setBodyPart}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </Box>
   );

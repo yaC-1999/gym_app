@@ -11,7 +11,7 @@ const HorizontalScollbar = ({ data, bodyPart, setBodyPart }) => {
       <ScrollMenu>
         {data.map((item) => {
           return (
-            <Box m="5px">
+            <Box m="10px">
               <BodyPart
                 item={item}
                 bodyPart={bodyPart}
