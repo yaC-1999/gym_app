@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { exercisesOptions, youtubeOptions, fetchData } from "../utils/fetchData";
+import {
+  exercisesOptions,
+  youtubeOptions,
+  fetchData,
+} from "../utils/fetchData";
 import { Box } from "@mui/material";
 import Detail from "./Detail";
 import ExerciseVideos from "./ExerciseVideos";
@@ -8,6 +12,8 @@ import SimilarExercises from "./SimilarExercises";
 const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
   const [exerciseVideos, setExerciseVideos] = useState([]);
+  const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
+  const [equipmentExercises, setEquipmentExercises] = useState([]);
 
   const { id } = useParams();
 
@@ -21,12 +27,26 @@ const ExerciseDetail = () => {
         `${exerciseDbUrl}/exercises/exercise/${id}`,
         exercisesOptions
       );
-      console.log(exerciseDetailData)
+      console.log(exerciseDetailData);
       setExerciseDetail(exerciseDetailData);
-      const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
+      const exerciseVideosData = await fetchData(
+        `${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`,
+        youtubeOptions
+      );
 
-      console.log(exerciseVideosData)
       setExerciseVideos(exerciseVideosData.contents);
+
+      const targetMuscleExercisesData = await fetchData(
+        `${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`,
+        exercisesOptions
+      );
+      setTargetMuscleExercises(targetMuscleExercisesData);
+
+      const equimentExercisesData = await fetchData(
+        `${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,
+        exercisesOptions
+      );
+      setEquipmentExercises(equimentExercisesData);
     };
     fetchExerciseData();
   }, [id]);
@@ -37,7 +57,10 @@ const ExerciseDetail = () => {
         name={exerciseDetail.name}
         exercisesVideos={exerciseVideos}
       />
-      <SimilarExercises />
+      <SimilarExercises
+        targetMuscleExercises={targetMuscleExercises}
+        equipmentExercises={equipmentExercises}
+      />
     </Box>
   );
 };
