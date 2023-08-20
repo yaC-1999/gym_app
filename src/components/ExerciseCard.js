@@ -25,7 +25,9 @@ const ExerciseCard = ({ exercise }) => {
           }}
         >
           <Card
+          
             sx={{
+              minWidth:'400px', height:'500px',
               ":hover": { boxShadow: "  0.1em 0.1em 1em rgba(0, 0, 0, 0.3);" },
             }}
           >
