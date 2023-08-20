@@ -8,7 +8,7 @@ import ExerciseCard from "./ExerciseCard";
 const SimilarExercises = ({ targetMuscleExercises, equipmentExercises }) => {
   return (
     <Grid mt={2}>
-      <Typography variant="h3" mb={5} mt={2}>
+      <Typography variant="h4" mb={5} mt={2}>
         Exercises that target the same{" "}
         <span style={{ color: "red" }}>muscle group</span>{" "}
       </Typography>
@@ -25,7 +25,7 @@ const SimilarExercises = ({ targetMuscleExercises, equipmentExercises }) => {
         )}
       </Grid>
 
-      <Typography variant="h3" mb={5} mt={2}>
+      <Typography variant="h4" mb={5} mt={2}>
         Exercises that target the same{" "}
         <span style={{ color: "red" }}>equipment</span>{" "}
       </Typography>
