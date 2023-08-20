@@ -5,8 +5,8 @@ import Logo from "../assets/images/Logo.png";
 
 const Navbar = () => {
   useEffect(() => {
-    console.log('useEffect')
-    console.log(window.location)
+    // console.log('useEffect')
+    // console.log(window.location)
     if (window.location.hash === "#exercises") {
       console.log('first')
       window.scrollTo({ top: 1000, behavior: "smooth" });
